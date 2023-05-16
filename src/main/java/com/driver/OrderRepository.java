@@ -51,4 +51,45 @@ public class OrderRepository {
             partner.add(id);
         return partner;
     }
+
+    public List<String> getOrdersByPartnerId(String partnerId){
+     List<String>orders=new ArrayList<>();
+     for(Map.Entry<String,String>entry:orderPartnerDb.entrySet()){
+         if(entry.getValue().equals(partnerId))
+             orders.add(entry.getKey());
+     }
+     return orders;
+    }
+
+
+    public List<String> getAllOrdersId(){
+        List<String>orders=new ArrayList<>();
+        for (String id:orderDb.keySet())
+            orders.add(id);
+        return orders;
+    }
+
+    public int getCountOfUnassignedOrders(){
+      int count=0;
+      for (String id:orderDb.keySet()){
+          if(!orderPartnerDb.containsKey(id))
+              count++;
+      }
+      return count;
+    }
+
+    public String deletePartnerById(String partnerId){
+      partnerDb.remove(partnerId);
+      for(Map.Entry<String,String>entry:orderPartnerDb.entrySet()){
+          if (entry.getValue().equals(partnerId))
+              orderPartnerDb.remove(entry.getKey());
+      }
+      return "Partner removed successfully";
+    }
+
+    public String deleteOrderById(String orderId) {
+      orderDb.remove(orderId);
+      orderPartnerDb.remove(orderId);
+      return "Order deleted successfully";
+    }
 }
