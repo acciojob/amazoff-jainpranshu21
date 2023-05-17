@@ -8,6 +8,10 @@ public class Order {
     public Order() {
     }
 
+    public Order(String id) {
+        this.id = id;
+    }
+
     public Order(String id, String deliveryTime) {
 
         // The deliveryTime has to converted from string to int and then stored in the attribute
