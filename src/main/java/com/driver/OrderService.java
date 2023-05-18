@@ -14,6 +14,10 @@ public class OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+
+    OrderService(){
+
+    }
     public String addOrder(Order order){
         String ans=orderRepository.addOrder(order);
         return ans;
