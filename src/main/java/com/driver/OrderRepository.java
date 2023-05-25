@@ -27,6 +27,10 @@ public class OrderRepository {
     }
 
     public String addOrderPartnerPair(String orderId, String partnerId){
+        if(!orderDb.containsKey(orderId))
+            return "orderId doesn't exists";
+            if(!partnerDb.containsKey(partnerId))
+                return "partnerId doesn't exists";
       orderPartnerDb.put(orderId,partnerId);
       return "Order partner added successfully";
     }
