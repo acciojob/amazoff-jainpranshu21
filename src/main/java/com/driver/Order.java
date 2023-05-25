@@ -8,14 +8,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String id, int deliveryTime) {
-        this.id = id;
-        this.deliveryTime = deliveryTime;
-    }
 
-    public Order(String id) {
-        this.id = id;
-    }
 
     public Order(String id, String deliveryTime) {
 
